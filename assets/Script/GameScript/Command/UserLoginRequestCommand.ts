@@ -1,7 +1,7 @@
 import Facade from "../../Framework/care/Facade";
 import { INotification } from "../../Framework/interfaces/INotification";
 import Command from "../../Framework/patterns/command/Command";
-import { ProxyDefine } from "../../Global/ProxyDefine";
+import { ProxyDefine } from "../GameConst/ProxyDefine";
 import { LoginRequestProxy } from "../Proxy/LoginRequestProxy";
 import { LoginRequestRepository } from "../repositories/LoginRequestRepository";
 

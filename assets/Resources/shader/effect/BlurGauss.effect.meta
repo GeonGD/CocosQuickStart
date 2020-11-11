@@ -1,0 +1,17 @@
+{
+  "ver": "1.0.25",
+  "uuid": "d64b960e-910a-4f6a-a413-b37932350ea6",
+  "compiledShaders": [
+    {
+      "glsl1": {
+        "vert": "uniform mat4 cc_matViewProj;\nprecision highp float;\nattribute vec3 a_position;\nattribute vec2 a_uv0;\nvarying vec2 uv0;\nvoid main () {\n  gl_Position = cc_matViewProj * vec4(a_position, 1);\n  uv0 = a_uv0;\n}",
+        "frag": "\nprecision highp float;\nvarying vec2 uv0;\nuniform sampler2D texture;\nuniform float u_degree;\nuniform float u_brightness;\nvec4 draw(vec2 uv) {\n    return  texture2D(texture,uv).rgba;\n}\nvec4 dim(vec4 col, float factor) {\n  return vec4(col.r * factor, col.g * factor, col.b * factor, col.a);\n}\nfloat rand(vec2 co){\n    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);\n}\nvoid main()\n{\n  vec4 blurred_image = vec4(0.);\n  for (float i = 0.; i < 5.; i++) {\n    vec2 q = vec2(cos(degrees((i/5.)*360.)),sin(degrees((i/5.)*360.))) * (rand(vec2(i,uv0.x+uv0.y))+u_degree);\n    vec2 uv2 = uv0+(q*u_degree);\n    blurred_image += draw(uv2)/2.;\n    q = vec2(cos(degrees((i/5.)*360.)),sin(degrees((i/5.)*360.))) * (rand(vec2(i+2.,uv0.x+uv0.y+24.))+u_degree);\n    uv2 = uv0+(q*u_degree);\n    blurred_image += draw(uv2)/2.;\n  }\n  blurred_image /= 5.;\n  blurred_image = dim(blurred_image, u_brightness);\n  gl_FragColor = vec4(blurred_image);\n}"
+      },
+      "glsl3": {
+        "vert": "uniform CCGlobal {\n  mat4 cc_matView;\n  mat4 cc_matViewInv;\n  mat4 cc_matProj;\n  mat4 cc_matProjInv;\n  mat4 cc_matViewProj;\n  mat4 cc_matViewProjInv;\n  vec4 cc_cameraPos;\n  vec4 cc_time;\n  mediump vec4 cc_screenSize;\n  mediump vec4 cc_screenScale;\n};\nprecision highp float;\nin vec3 a_position;\nin vec2 a_uv0;\nout vec2 uv0;\nvoid main () {\n  gl_Position = cc_matViewProj * vec4(a_position, 1);\n  uv0 = a_uv0;\n}",
+        "frag": "\nprecision highp float;\nin vec2 uv0;\nuniform sampler2D texture;\nuniform ARGS{\n  float u_degree;\n  float u_brightness;\n};\nvec4 draw(vec2 uv) {\n    return  texture2D(texture,uv).rgba;\n}\nvec4 dim(vec4 col, float factor) {\n  return vec4(col.r * factor, col.g * factor, col.b * factor, col.a);\n}\nfloat rand(vec2 co){\n    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);\n}\nvoid main()\n{\n  vec4 blurred_image = vec4(0.);\n  for (float i = 0.; i < 5.; i++) {\n    vec2 q = vec2(cos(degrees((i/5.)*360.)),sin(degrees((i/5.)*360.))) * (rand(vec2(i,uv0.x+uv0.y))+u_degree);\n    vec2 uv2 = uv0+(q*u_degree);\n    blurred_image += draw(uv2)/2.;\n    q = vec2(cos(degrees((i/5.)*360.)),sin(degrees((i/5.)*360.))) * (rand(vec2(i+2.,uv0.x+uv0.y+24.))+u_degree);\n    uv2 = uv0+(q*u_degree);\n    blurred_image += draw(uv2)/2.;\n  }\n  blurred_image /= 5.;\n  blurred_image = dim(blurred_image, u_brightness);\n  gl_FragColor = vec4(blurred_image);\n}"
+      }
+    }
+  ],
+  "subMetas": {}
+}

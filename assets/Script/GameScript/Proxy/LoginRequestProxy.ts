@@ -1,5 +1,5 @@
 import Proxy from "../../Framework/patterns/proxy/Proxy";
-import { CommandDefine } from "../../Global/CommandDefine";
+import { CommandDefine } from "../GameConst/CommandDefine";
 import { LoginRequestRepository } from "../repositories/LoginRequestRepository";
 import { LoginResponseRepository } from "../repositories/LoginResponseRepository";
 

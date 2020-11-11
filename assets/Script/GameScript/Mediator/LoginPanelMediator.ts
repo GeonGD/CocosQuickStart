@@ -1,6 +1,6 @@
 import { INotification } from "../../Framework/interfaces/INotification";
 import Mediator from "../../Framework/patterns/mediator/Mediator";
-import { CommandDefine } from "../../Global/CommandDefine";
+import { CommandDefine } from "../GameConst/CommandDefine";
 import { LoginRequestRepository } from "../repositories/LoginRequestRepository";
 import { LoginResponseRepository } from "../repositories/LoginResponseRepository";
 import { LoginPanelView } from "../View/LoginPanelView";

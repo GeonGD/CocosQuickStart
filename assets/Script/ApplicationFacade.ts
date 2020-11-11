@@ -1,8 +1,8 @@
 import { OpenLoginPanelCommand } from "./GameScript/Command/OpenLoginPanelCommand";
 import { UserLoginRequestCommand } from "./GameScript/Command/UserLoginRequestCommand";
 import Facade from "./Framework/care/Facade";
-import { CommandDefine } from "./Global/CommandDefine";
-import { ProxyDefine } from "./Global/ProxyDefine";
+import { CommandDefine } from "./GameScript/GameConst/CommandDefine";
+import { ProxyDefine } from "./GameScript/GameConst/ProxyDefine";
 import { LoginRequestProxy } from "./GameScript/Proxy/LoginRequestProxy";
 
 export class ApplicationFacade extends Facade {

@@ -1,8 +1,8 @@
 import Facade from "../../Framework/care/Facade";
 import { INotification } from "../../Framework/interfaces/INotification";
 import Command from "../../Framework/patterns/command/Command";
-import { ApplicationGlobal } from "../../Global/ApplicationGlobal";
-import { MediatorDefine } from "../../Global/MediatorDefine";
+import { ApplicationGlobal } from "../GameConst/ApplicationGlobal";
+import { MediatorDefine } from "../GameConst/MediatorDefine";
 import { LoginPanelMediator } from "../Mediator/LoginPanelMediator";
 
 
