@@ -15,12 +15,12 @@ export default class Observer implements IObserver {
         return this.notify;
     }
 
-    private _getNotifyContext(): any {
-        return this.context;
-    }
-
     public setNotifyMethod(notifyMethod: Function): void {
         this.notify = notifyMethod;
+    }
+
+    private _getNotifyContext(): any {
+        return this.context;
     }
 
     public setNotifyContext(notifyContext: any): void {

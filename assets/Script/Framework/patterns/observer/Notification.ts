@@ -21,7 +21,7 @@ export default class Notification implements INotification {
     }
 
     public getBody(): any {
-        this.body;
+        return this.body;
     }
 
     public setType(type: string): void {

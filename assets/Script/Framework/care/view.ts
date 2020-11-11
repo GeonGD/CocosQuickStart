@@ -32,10 +32,11 @@ export default class View implements IView {
 
     public registerObserver(notificationName: string, observer: IObserver): void {
         let observers: IObserver[] = this.observerMap[notificationName];
-        if (observers)
+        if (observers) {
             observers.push(observer);
-        else
+        } else {
             this.observerMap[notificationName] = [observer];
+        }
     }
 
     public removeObserver(notificationName: string, notifyContext: any): void {
@@ -77,12 +78,12 @@ export default class View implements IView {
 
         let interests: string[] = mediator.listNotificationInterests();
         let len: Number = interests.length;
+
         if (len > 0) {
             let observer: IObserver = new Observer(mediator.handleNotification, mediator);
             for (let i: number = 0; i < len; i++)
                 this.registerObserver(interests[i], observer);
         }
-
         mediator.onRegister();
     }
 

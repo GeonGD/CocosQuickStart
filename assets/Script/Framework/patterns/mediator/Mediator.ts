@@ -27,10 +27,17 @@ export default class Mediator extends Notifier implements IMediator, INotifier {
         this.viewComponent = viewComponent;
     }
 
+    /**
+     * @description 监听事件列表
+     */
     public listNotificationInterests(): string[] {
         return new Array<string>();
     }
 
+    /**
+     * @description 监听事件处理
+     * @param {INotification} notification 接收事件
+     */
     public handleNotification(notification: INotification): void {
     }
 
